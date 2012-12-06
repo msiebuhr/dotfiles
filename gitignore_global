@@ -1,0 +1,15 @@
+# Editor files
+*.swp
+*.swo
+
+# Python files
+*.pyc
+*.pyo
+
+# GO(lang)
+*.6
+*.8
+
+# Logs & Databases
+*.log
+*.sqlite
