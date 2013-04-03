@@ -24,7 +24,8 @@ endif
 " Bedre fonte
 if has("gui_running")
 	if has("gui_gtk2")
-		set guifont=Inconsolata\ 12
+		"set guifont=Inconsolata\ 12
+		set guifont=SourceCodePro\ 13
 	elseif has("gui_win32")
 		set guifont=Lucida_Console:h11:cANSI
 	endif
@@ -109,3 +110,16 @@ autocmd BufNewfile,BufRead *tex set tw=72
 " When I write email in mutt...
 autocmd BufNewfile,BufRead /tmp/mutt* set list listchars=tab:>-,trail:. tw=70
 
+" JavaScript folding, per http://amix.dk/blog/post/19132
+function! JavaScriptFold()
+	setl foldmethod=syntax
+	setl foldlevelstart=1
+	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+	function! FoldText()
+		return substitute(getline(v:foldstart), '{.*', '{' . (1 + v:foldend - v:foldstart) . ' lines}', '')
+	endfunction
+	setl foldtext=FoldText()
+endfunction
+au FileType javascript call JavaScriptFold()
+au FileType javascript setl fen
