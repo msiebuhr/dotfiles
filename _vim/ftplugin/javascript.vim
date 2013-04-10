@@ -7,5 +7,5 @@ setlocal smarttab	" Do tabs smartly
 setlocal tabstop=4	" Indent using four spaces
 
 " Don't fold too much!
-setlocal foldnestmax=3
+setlocal foldnestmax=6
 

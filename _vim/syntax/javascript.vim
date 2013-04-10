@@ -212,7 +212,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptNumber               Number
   HiLink javaScriptFloat                Number
   HiLink javaScriptBoolean              Boolean
-  HiLink javaScriptLabel                Label
+  "HiLink javaScriptLabel                Label
   HiLink javaScriptSpecial              Special
   HiLink javaScriptSource               Special
   HiLink javaScriptGlobalObjects        Special
