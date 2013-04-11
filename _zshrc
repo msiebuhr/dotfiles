@@ -45,7 +45,7 @@ alias ll='ls -l'
 # Get hold of by paths
 foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin);
 	if [[ -d $extrapath ]]; then
-		export PATH=$PATH:$extrapath
+		export PATH=$extrapath:$PATH
 	fi
 end
 
