@@ -43,7 +43,7 @@ export MINICOM="-m -c on"
 alias ll='ls -l'
 
 # Get hold of by paths
-foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin);
+foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python);
 	if [[ -d $extrapath ]]; then
 		export PATH=$extrapath:$PATH
 	fi
