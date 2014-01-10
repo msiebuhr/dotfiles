@@ -17,7 +17,7 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/msi/.zshrc'
+style :compinstall filename $HOME/.zshrc
 
 autoload -Uz compinit
 compinit
@@ -33,17 +33,34 @@ export GZIP='-9' # Having -v breaks tar(1) -z in some cases. See https://bugs.la
 export GARMIN_SAVE_RUNS=$HOME/Documents/GPS/
 export GREP_OPTIONS='--color'
 export LESS='-FRX' # Git gives it -FRXS, but S means it doesn't break lines (which I quite like).
-#PROCESSORS=`grep -c 'model name' /proc/cpuinfo`
-#export MAKEFLAGS="-j $PROCESSORS"
-#export SCONSFLAGS="-j $PROCESSORS"
 export MINICOM="-m -c on"
 
 # Aliases
-#alias ls='ls --color -h'
 alias ll='ls -l'
 
+# Mac OS X
+if [[ $(uname) == Darwin ]];then
+	# ls -color -> ls -G
+	alias ls='ls -G -h'
+
+	# Colors on Mac CLI tools
+	export CLICOLORS=1
+
+	# Processor count
+	PROCESSORS=`sysctl -n hw.ncpu`
+fi
+
+if [[ $(uname) == Linux ]];then
+	alias ls='ls --color -h'
+	PROCESSORS=`grep -c 'model name' /proc/cpuinfo`
+fi
+
+# Set build parallelism based on processor count
+export MAKEFLAGS="-j $PROCESSORS"
+export SCONSFLAGS="-j $PROCESSORS"
+
 # Get hold of by paths
-foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python $HOME/Source/go/bin);
+foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python $HOME/Source/go/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin);
 	if [[ -d $extrapath ]]; then
 		export PATH=$extrapath:$PATH
 	fi
