@@ -31,3 +31,6 @@
 [log]
 	date = local
 
+[push]
+	config = current
+	default = current
