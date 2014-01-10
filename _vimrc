@@ -60,7 +60,8 @@ set backspace=2			" So that backspace should behave normal
 set incsearch			" incremental search
 set hlsearch			" Highlight my search
 set whichwrap+=<,>,[,]	" backspace and cursor keys wrap to previous/next line
-set foldmethod=marker	" Correct folding is a bliss ...
+"set foldmethod=marker	" Correct folding is a bliss ...
+set foldmethod=syntax	" Fold by whatever syntax the syntaxer fancies.
 
 
 " Code stuff
