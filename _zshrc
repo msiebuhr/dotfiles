@@ -66,6 +66,11 @@ foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin /u
 	fi
 end
 
+# GO
+if [[ -d $HOME/Source/go ]]; then
+	export GOPATH=$HOME/Source/go
+fi
+
 # if NPM exists, set up tab completion
 npm_bin=`which npm`
 if [[ -f $npm_bin && -x $npm_bin ]]; then
