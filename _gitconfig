@@ -34,3 +34,7 @@
 [push]
 	config = current
 	default = current
+
+[pull]
+# Rebase by default (avoids quite a few f*ups when my brain isn't working properly).
+	rebase = true
