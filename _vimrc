@@ -76,11 +76,6 @@ set nocp			" No VI for me ....
 autocmd BufNewfile,BufEnter,BufLeave *.java set cindent
 set complete=.,w,b,u,t,i,d,k
 
-" Map JSON-files to use JavaScript syntax
-autocmd BufNewfile,BufEnter,BufRead *.json set ft=javascript
-autocmd BufNewfile,BufEnter,BufRead *.cjson set ft=javascript
-
-
 " Suffixes to ignore in file completion
 set suffixes=.bak,.swp,.o,~,.class,.exe,.obj,.dvi,.pdf,.aux
 
