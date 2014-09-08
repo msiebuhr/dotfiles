@@ -14,6 +14,9 @@ esac
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+# Ingore duplicate entries in history
+setopt HIST_IGNORE_DUPS
+
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -60,7 +63,7 @@ export MAKEFLAGS="-j $PROCESSORS"
 export SCONSFLAGS="-j $PROCESSORS"
 
 # Get hold of by paths
-foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin  ~/.gem/ruby/1.9.1/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python $HOME/Source/go/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin);
+foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin  ~/.gem/ruby/1.9.1/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python $HOME/Source/go/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin /usr/local/opt/go/libexec/bin);
 	if [[ -d $extrapath ]]; then
 		export PATH=$extrapath:$PATH
 	fi
@@ -81,6 +84,11 @@ fi
 # FIXME: Complains on every shell-start if nothing matches `~/.npmrc-*`.
 foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
 	alias npm$npmname="npm --userconfig=$HOME/.npmrc$npmname"
+end
+
+# Completion for various user-supplied things with Homebrew
+foreach sourcescript (/usr/local/share/zsh/site-functions/go);
+	. $sourcescript
 end
 
 # GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
