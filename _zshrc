@@ -99,6 +99,10 @@ foreach sourcescript (/usr/local/share/zsh/site-functions/go);
 	. $sourcescript
 end
 
+if [[ -f ~/.zsh_secrets ]]; then
+    .  ~/.zsh_secrets
+fi
+
 # GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
 # https://launchpad.net/~yofel/+archive/backports
 # (And see https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499 for details.)
