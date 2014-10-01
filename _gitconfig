@@ -2,7 +2,7 @@
 	name = Morten Siebuhr
 	email = sbhr@sbhr.dk
 [core]
-	excludesfile = /home/msi/.config/git/gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	status = auto
 	diff = auto
