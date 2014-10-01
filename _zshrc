@@ -17,7 +17,15 @@ SAVEHIST=1000
 # Ingore duplicate entries in history
 setopt HIST_IGNORE_DUPS
 
-bindkey -e
+# Set some keys on Mac keyboards (using iTerm to xterm defaults)
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^[[3~" delete-char
+bindkey "^[[1;9D" backward-word # alt + left arrow
+bindkey "^[[1;9C" forward-word # alt + right arrow
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename $HOME/.zshrc
