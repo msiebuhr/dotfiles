@@ -94,11 +94,6 @@ foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
 	alias npm$npmname="npm --userconfig=$HOME/.npmrc$npmname"
 end
 
-# Completion for various user-supplied things with Homebrew
-foreach sourcescript (/usr/local/share/zsh/site-functions/go);
-	. $sourcescript
-end
-
 if [[ -f ~/.zsh_secrets ]]; then
     .  ~/.zsh_secrets
 fi
