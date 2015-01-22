@@ -18,13 +18,15 @@ SAVEHIST=1000
 setopt HIST_IGNORE_DUPS
 
 # Set some keys on Mac keyboards (using iTerm to xterm defaults)
-bindkey "^[[H" beginning-of-line
-bindkey "^[[F" end-of-line
+bindkey "^[[H" beginning-of-line # Home
+bindkey "^[[F" end-of-line # End
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
-bindkey "^[[3~" delete-char
+bindkey "^[[3~" delete-char # delete
 bindkey "^[[1;9D" backward-word # alt + left arrow
 bindkey "^[[1;9C" forward-word # alt + right arrow
+bindkey "^N" history-incremental-search-forward
+bindkey "^R" history-incremental-search-backward
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -41,7 +43,7 @@ PROMPT='%B%F{white}%2~%f%b %(!.#.>)'
 
 # Nice shortcuts
 export GZIP='-9' # Having -v breaks tar(1) -z in some cases. See https://bugs.launchpad.net/ubuntu/+source/tar/+bug/883026
-export GARMIN_SAVE_RUNS=$HOME/Documents/GPS/
+export GARMIN_SAVE_RUNS=$HOME/Documents/Sync/GPS/
 export GREP_OPTIONS='--color'
 export LESS='-FRX' # Git gives it -FRXS, but S means it doesn't break lines (which I quite like).
 export MINICOM="-m -c on"
@@ -94,6 +96,11 @@ foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
 	alias npm$npmname="npm --userconfig=$HOME/.npmrc$npmname"
 end
 
+# Completion for various user-supplied things with Homebrew
+#foreach sourcescript (/usr/local/share/zsh/site-functions/go);
+#	. $sourcescript
+#end
+
 if [[ -f ~/.zsh_secrets ]]; then
     .  ~/.zsh_secrets
 fi
@@ -101,3 +108,6 @@ fi
 # GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
 # https://launchpad.net/~yofel/+archive/backports
 # (And see https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499 for details.)
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
