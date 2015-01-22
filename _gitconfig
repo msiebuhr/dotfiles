@@ -11,10 +11,8 @@
 [alias]
 	co = checkout
 	cdiff = diff --cached
-	lg = log --color --graph --pretty=format:'%Cred%h%Creset ·%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset · %C(bold blue)%an%Creset' --abbrev-commit --
 	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	head = log --graph --decorate --pretty=oneline --abbrev-commit --all -n 20
-	springcleaning = for-each-ref --sort=-committerdate --format='%(refname:short)  %(committerdate:short)'
 
 #[log]
 #	graph = yes
