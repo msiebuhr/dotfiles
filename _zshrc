@@ -73,7 +73,7 @@ export MAKEFLAGS="-j $PROCESSORS"
 export SCONSFLAGS="-j $PROCESSORS"
 
 # Get hold of by paths
-foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin  ~/.gem/ruby/1.9.1/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python $HOME/Source/go/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin /usr/local/opt/go/libexec/bin /usr/local/lib/node_modules/.bin/);
+foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin  ~/.gem/ruby/1.9.1/bin ~/Source/golang/bin /usr/local/share/npm/bin /usr/local/Cellar/ruby/2.0.0-p0/bin /usr/local/share/python $HOME/Source/go/bin /usr/bin /bin /usr/sbin /sbin /usr/local/bin /usr/local/opt/go/libexec/bin /usr/local/lib/node_modules/.bin/ /usr/local/heroku/bin);
 	if [[ -d $extrapath ]]; then
 		export PATH=$extrapath:$PATH
 	fi
@@ -108,6 +108,3 @@ fi
 # GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
 # https://launchpad.net/~yofel/+archive/backports
 # (And see https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499 for details.)
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
