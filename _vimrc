@@ -28,7 +28,8 @@ if has("gui_running")
 		set guifont=SourceCodePro\ 13
 	elseif has("gui_macvim")
 		set vb " No audible bell
-		set macmeta " Allow use of Option as meta key
+        " Enabling this makes ex. {} turn into copyright and í on DK kbd...
+		"set macmeta " Allow use of Option as meta key
 		set guifont=Menlo\ Regular:h14
 	elseif has("gui_win32")
 		set guifont=Lucida_Console:h11:cANSI
