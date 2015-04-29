@@ -15,39 +15,36 @@ filetype indent on
 
 "Sætter lidt specielle ting hvis der køres på windows
 if has('win32')
-
-	" vim-LaTeX-specifikt.
-	set shellslash
-	set grepprg=grep\ -nH\ $*
+    " vim-LaTeX-specifikt.
+    set shellslash
+    set grepprg=grep\ -nH\ $*
 endif
 
 " Bedre fonte
 if has("gui_running")
-	if has("gui_gtk2")
-		"set guifont=Inconsolata\ 12
-		set guifont=SourceCodePro\ 13
-	elseif has("gui_macvim")
-		set vb " No audible bell
+    " zenburn on GUI
+    colorscheme zenburn
+    if has("gui_gtk2")
+        "set guifont=Inconsolata\ 12
+        set guifont=SourceCodePro\ 13
+    elseif has("gui_macvim")
+        set vb " No audible bell
         " Enabling this makes ex. {} turn into copyright and í on DK kbd...
-		"set macmeta " Allow use of Option as meta key
-		set guifont=Menlo\ Regular:h14
-	elseif has("gui_win32")
-		set guifont=Lucida_Console:h11:cANSI
-	endif
-endif
-
-" Nicer colours
-"colorscheme evening
-if has("gui_running")
-	colorscheme zenburn
+        "set macmeta " Allow use of Option as meta key
+        set guifont=Menlo\ Regular:h14
+    elseif has("gui_win32")
+        set guifont=Lucida_Console:h11:cANSI
+    endif
 else
-	colorscheme default
+    " Default colors elsewhere
+    colorscheme default
 endif
 
 " Editor layout
 set nu					" Linje-numerering
 set showmatch			" Parenthesis matching
 set ruler				" I want to see where I am in the file
+
 "Intet toolbar-pjat
 set guioptions-=T
 if ! has('win32') " Kun menu-bar i windows
