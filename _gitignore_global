@@ -27,3 +27,6 @@ Temporary Items
 Session.vim
 .netrwhist
 *~
+
+# Per-project temporary data
+tempWork
