@@ -109,6 +109,9 @@ autocmd BufNewfile,BufRead *tex set tw=72
 " When I write email in mutt...
 autocmd BufNewfile,BufRead /tmp/mutt* set list listchars=tab:>-,trail:. tw=70
 
+"autocmd BufNewfile,BufRead *.go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+autocmd BufNewfile,BufRead *.go set softtabstop=4 noexpandtab
+
 " JavaScript folding, per http://amix.dk/blog/post/19132
 "function! JavaScriptFold()
 "	setl foldmethod=syntax
