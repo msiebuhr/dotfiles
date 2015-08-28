@@ -1,0 +1,18 @@
+# Global
+host *
+	ForwardAgent yes
+
+	# Multiplex connections and keep idle connections open for one hour
+	ControlMaster auto
+	ControlPath ~/.ssh/control-master-%r@%h:%p
+	ControlPersist 3600
+
+	# Load keys
+	IdentityFile "%d/.ssh/id_rsa"
+
+	# Copy over preferences
+	SendEnv EDITOR
+
+host github.com *.github.com
+	IdentityFile "%d/.ssh/github_rsa"
+	ControlPersist no
