@@ -1,6 +1,11 @@
 # Global
 host *
-	ForwardAgent yes
+    # Send keepalives to the server every 120s (avoids 'Write failed: Broken pipe)
+    ServerAliveInterval 120
+
+    # Forward access to the socket to which we're connected. Bypasses some
+    # security niceties on the server, but very useful with gateway/jump hosts.
+    #ForwardAgent yes
 
 	# Multiplex connections and keep idle connections open for one hour
 	ControlMaster auto
@@ -13,6 +18,17 @@ host *
 	# Copy over preferences
 	SendEnv EDITOR
 
+# Amazon IP ranges
+Host 52.* 54.* ec2-*
+    IdentityFile %d/.ssh/id_rsa_amazon
+    User ec2-user
+
+# My Freenas box
+Host freenas.local
+    IdentityFile %d/.ssh/id_rsa_freenas
+    User root
+
+# Taling to github
 host github.com *.github.com
 	IdentityFile "%d/.ssh/github_rsa"
 	ControlPersist no
