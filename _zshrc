@@ -102,12 +102,6 @@ if [[ -d $HOME/Source/go ]]; then
 	export GOPATH=$HOME/Source/go
 fi
 
-# if NPM exists, set up tab completion
-npm_bin=`which npm`
-if [[ -f $npm_bin && -x $npm_bin ]]; then
-	. <($npm_bin completion)
-fi
-
 # Set up my various NPM-repositories
 # FIXME: Complains on every shell-start if nothing matches `~/.npmrc-*`.
 foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
