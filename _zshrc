@@ -120,3 +120,8 @@ fi
 # GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
 # https://launchpad.net/~yofel/+archive/backports
 # (And see https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499 for details.)
+
+# Work-things need to run on in new shells
+if [[ -f /opt/boxen/env.sh ]]; then
+    source /opt/boxen/env.sh
+fi
