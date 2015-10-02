@@ -9,7 +9,7 @@ Icon
 # Thumbnails
 ._*
 
-# Files that might appear on external disk
+# Files that might appear on external disks
 .Spotlight-V100
 .Trashes
 
@@ -30,3 +30,8 @@ Session.vim
 
 # Per-project temporary data
 tempWork
+
+# Things from Podio boxen setup
+\#*\#
+/tags
+/.bundle/
