@@ -3,6 +3,6 @@
 
 Install with
 
-   stow -v -t ~ git vim zsh
+   stow -v -t ~ git vim zsh profile
 
 (Converting the rest is an ongoing project...)
