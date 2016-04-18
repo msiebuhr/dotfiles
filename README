@@ -1,0 +1,8 @@
+.files
+======
+
+Install with
+
+   stow -v -t ~ git vim
+
+(Converting the rest is an ongoing project...)

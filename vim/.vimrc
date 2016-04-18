@@ -67,6 +67,7 @@ set autoindent		" autoindention
 set shiftwidth=4	" My tabs are 4 chars.
 set tabstop=4
 set expandtab       " Expand all tabs to spaces
+set nofixendofline  " Doesn't add trail EOL if file doesn't have one
 
 set nocp			" No VI for me ....
 
