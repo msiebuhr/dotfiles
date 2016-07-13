@@ -71,6 +71,14 @@ set nofixendofline  " Doesn't add trail EOL if file doesn't have one
 
 set nocp			" No VI for me ....
 
+" Make CTRL-P ignore node_modules, .git and other junk
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/](node_modules|.git|.svn)$',
+"   \ 'file': '\v\.(exe|so|dll)$',
+"   \ 'link': 'some_bad_symbolic_links',
+"   \ }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|node_modules)$', }
+
 " Hvis jeg bruger JAVA skal den bruge c-style indentering
 autocmd BufNewfile,BufEnter,BufLeave *.java set cindent
 set complete=.,w,b,u,t,i,d,k
