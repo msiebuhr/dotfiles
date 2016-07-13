@@ -3,6 +3,7 @@
 	email = sbhr@sbhr.dk
 [core]
 	excludesfile = ~/.gitignore_global
+	quotepath = false
 [color]
 	status = auto
 	diff = auto
@@ -11,16 +12,8 @@
 [alias]
 	co = checkout
 	cdiff = diff --cached
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	head = log --graph --decorate --pretty=oneline --abbrev-commit --all -n 20
-
-#[log]
-#	graph = yes
-#	decorate = yes
-#	pretty = short
-#	date = local
-#	branches = yes
-#	abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --author-date-order
+	head = log --graph --decorate --pretty=oneline --abbrev-commit --all --author-date-order -n 20
 
 [format]
 	#pretty = short
@@ -34,4 +27,4 @@
 
 [pull]
 # Rebase by default (avoids quite a few f*ups when my brain isn't working properly).
-	rebase = true
+    #rebase = true
