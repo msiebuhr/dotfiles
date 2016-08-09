@@ -117,9 +117,9 @@ if [[ -f ~/.zsh_secrets ]]; then
     .  ~/.zsh_secrets
 fi
 
-if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
-    . ~/.nix-profile/etc/profile.d/nix.sh
-fi
+#if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
+#    . ~/.nix-profile/etc/profile.d/nix.sh
+#fi
 
 # GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
 # https://launchpad.net/~yofel/+archive/backports
