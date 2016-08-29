@@ -81,7 +81,6 @@ foreach extrapath (
     ~/Source/golang/bin
     /usr/local/share/npm/bin
     /usr/local/Cellar/ruby/2.0.0-p0/bin
-    /usr/local/share/python
     $HOME/Source/go/bin
     /usr/bin
     /bin
