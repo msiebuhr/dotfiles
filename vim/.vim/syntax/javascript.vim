@@ -56,9 +56,10 @@ syntax case match
 
 "" Syntax in the JavaScript code
 syntax match   javaScriptSpecial        "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
+syntax match   javaScriptTemplateVar    "${.*}"
 syntax region  javaScriptStringD        start=+"+  skip=+\\\\\|\\$"+  end=+"+  contains=javaScriptSpecial,@htmlPreproc
 syntax region  javaScriptStringS        start=+'+  skip=+\\\\\|\\$'+  end=+'+  contains=javaScriptSpecial,@htmlPreproc
-syntax region  javaScriptStringB        start=+`+  skip=+\\\\\|\\$`+  end=+`+  contains=javaScriptSpecial,@htmlPreproc
+syntax region  javaScriptStringB        start=+`+  skip=+\\\\\|\\$`+  end=+`+  contains=javaScriptSpecial,@htmlPreproc,javaScriptTemplateVar
 syntax region  javaScriptRegexpString   start=+/\(\*\|/\)\@!+ skip=+\\\\\|\\/+ end=+/[gim]\{,3}+ contains=javaScriptSpecial,@htmlPreproc oneline
 syntax match   javaScriptNumber         /\<-\=\d\+L\=\>\|\<0[xX]\x\+\>/
 syntax match   javaScriptFloat          /\<-\=\%(\d\+\.\d\+\|\d\+\.\|\.\d\+\)\%([eE][+-]\=\d\+\)\=\>/
@@ -219,6 +220,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   "HiLink javaScriptLabel                Label
   HiLink javaScriptLabel                Operator
   HiLink javaScriptSpecial              Special
+  HiLink javaScriptTemplateVar          Special
   HiLink javaScriptSource               Special
   HiLink javaScriptGlobalObjects        Special
   HiLink javaScriptExceptions           Special
