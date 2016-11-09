@@ -77,7 +77,7 @@ set nocp			" No VI for me ....
 "   \ 'file': '\v\.(exe|so|dll)$',
 "   \ 'link': 'some_bad_symbolic_links',
 "   \ }
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|node_modules)$', }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|node_modules|coverage)$', }
 
 " Hvis jeg bruger JAVA skal den bruge c-style indentering
 autocmd BufNewfile,BufEnter,BufLeave *.java set cindent
