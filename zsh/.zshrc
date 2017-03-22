@@ -50,6 +50,8 @@ export MINICOM="-m -c on"
 
 # Aliases
 alias ll='ls -l'
+alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n"
+
 
 # Mac OS X
 if [[ $(uname) == Darwin ]];then
