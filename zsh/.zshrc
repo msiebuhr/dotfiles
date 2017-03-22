@@ -118,6 +118,11 @@ if [[ -f ~/.zsh_secrets ]]; then
     .  ~/.zsh_secrets
 fi
 
+if [[ -d ~/.nvm && -f /usr/local/opt/nvm/nvm.sh ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    . "/usr/local/opt/nvm/nvm.sh"
+fi
+
 #if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
 #    . ~/.nix-profile/etc/profile.d/nix.sh
 #fi
