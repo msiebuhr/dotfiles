@@ -28,6 +28,10 @@ bindkey "^[[1;9C" forward-word # alt + right arrow
 bindkey "^N" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
 
+# Completion for various user-supplied things with Homebrew
+fpath=(/usr/local/share/zsh/site-completions $fpath)
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename $HOME/.zshrc
