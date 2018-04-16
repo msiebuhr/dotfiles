@@ -35,6 +35,8 @@ if has("gui_running")
     elseif has("gui_win32")
         set guifont=Lucida_Console:h11:cANSI
     endif
+
+    set guifont=Go_Mono:h14
 else
     " Default colors elsewhere
     colorscheme default
