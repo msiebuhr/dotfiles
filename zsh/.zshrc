@@ -80,13 +80,9 @@ export SCONSFLAGS="-j $PROCESSORS"
 
 # Get hold of by paths
 foreach extrapath (
-    ~/bin
+    #~/bin
     ~/.local/bin
-    ~/.gem/ruby/1.8/bin
-    ~/.gem/ruby/1.9.1/bin
-    ~/Source/golang/bin
     /usr/local/share/npm/bin
-    /usr/local/Cellar/ruby/2.0.0-p0/bin
     $HOME/Source/go/bin
     /usr/bin
     /bin
@@ -94,8 +90,6 @@ foreach extrapath (
     /sbin
     /usr/local/bin
     /usr/local/opt/go/libexec/bin
-    /usr/local/lib/node_modules/.bin/
-    /usr/local/heroku/bin
     );
 	if [[ -d $extrapath ]]; then
 		export PATH=$extrapath:$PATH
