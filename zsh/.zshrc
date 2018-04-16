@@ -103,22 +103,12 @@ fi
 
 # Set up my various NPM-repositories
 # FIXME: Complains on every shell-start if nothing matches `~/.npmrc-*`.
-foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
-	alias npm$npmname="npm --userconfig=$HOME/.npmrc$npmname"
-end
-
-# Completion for various user-supplied things with Homebrew
-#foreach sourcescript (/usr/local/share/zsh/site-functions/go);
-#	. $sourcescript
+#foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
+#	alias npm$npmname="npm --userconfig=$HOME/.npmrc$npmname"
 #end
 
 if [[ -f ~/.zsh_secrets ]]; then
     .  ~/.zsh_secrets
-fi
-
-if [[ -d ~/.nvm && -f /usr/local/opt/nvm/nvm.sh ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    . "/usr/local/opt/nvm/nvm.sh"
 fi
 
 #if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
