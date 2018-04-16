@@ -56,7 +56,8 @@ syntax case match
 
 "" Syntax in the JavaScript code
 syntax match   javaScriptSpecial        "\\\d\d\d\|\\x\x\{2\}\|\\u\x\{4\}\|\\."
-syntax match   javaScriptTemplateVar    "${.*}"
+"syntax match   javaScriptTemplateVar    "${^$+}"
+syntax region  javaScriptTemplateVar      contained start="${" end="}" contains=@javaScriptAll
 syntax region  javaScriptStringD        start=+"+  skip=+\\\\\|\\$"+  end=+"+  contains=javaScriptSpecial,@htmlPreproc
 syntax region  javaScriptStringS        start=+'+  skip=+\\\\\|\\$'+  end=+'+  contains=javaScriptSpecial,@htmlPreproc
 syntax region  javaScriptStringB        start=+`+  skip=+\\\\\|\\$`+  end=+`+  contains=javaScriptSpecial,@htmlPreproc,javaScriptTemplateVar
@@ -80,7 +81,7 @@ syntax keyword javaScriptNull           null
 syntax keyword javaScriptConditional    if else
 syntax keyword javaScriptRepeat         do while for
 syntax keyword javaScriptBranch         break continue switch case default return
-syntax keyword javaScriptStatement      try catch throw with finally
+syntax keyword javaScriptStatement      try catch throw with finally await async
 
 syntax keyword javaScriptGlobalObjects  Array Boolean Date Function Infinity JavaArray JavaClass JavaObject JavaPackage Math Number NaN Object Packages RegExp String Undefined java netscape sun Symbol
 
