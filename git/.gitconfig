@@ -12,8 +12,8 @@
 [alias]
 	co = checkout
 	cdiff = diff --cached
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all --author-date-order
-	head = log --graph --decorate --pretty=oneline --abbrev-commit --all --author-date-order -n 20
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	head = log --graph --decorate --pretty=oneline --abbrev-commit --all -n 20
     up = pull --rebase --autostash
 
 [format]
