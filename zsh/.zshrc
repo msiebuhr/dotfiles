@@ -43,7 +43,7 @@ zstyle ':completion:*' special-dirs true
 
 # A simple prompt
 # See MAN zshmisc
-PROMPT='%B%F{white}%2~%f%b %(!.⟫.⟩)'
+PROMPT='%B%F{white}%2~%f %(!.%F{red}.%F{blue})>%f%b'
 
 # Nice shortcuts
 export GZIP='-9' # Having -v breaks tar(1) -z in some cases. See https://bugs.launchpad.net/ubuntu/+source/tar/+bug/883026
