@@ -44,7 +44,11 @@ fi
 
 
 autoload -Uz compinit
-compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 # End of lines added by compinstall
 zstyle ':completion:*' special-dirs true
 
