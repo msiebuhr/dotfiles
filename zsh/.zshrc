@@ -36,6 +36,13 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # The following lines were added by compinstall
 zstyle :compinstall filename $HOME/.zshrc
 
+# Initialize homebrew completions
+# See https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
