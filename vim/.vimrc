@@ -4,6 +4,9 @@ call pathogen#infect()
 "I want syntax highligthing
 if has("syntax")
 	syntax on
+
+	" https://stackoverflow.com/questions/27235102/vim-randomly-breaks-syntax-highlighting
+	syntax sync minlines=20
 endif
 
 " Add Ubnutus addon-path
