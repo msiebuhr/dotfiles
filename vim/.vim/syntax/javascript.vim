@@ -89,6 +89,10 @@ syntax keyword javaScriptExceptions     Error EvalError RangeError ReferenceErro
 
 syntax keyword javaScriptFutureKeys     abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws goto private transient debugger implements protected volatile double import public
 
+"" Classes
+syntax keyword javascriptClass          class
+syntax keyword javascriptStaticFunction static
+
 "" DOM/HTML/CSS specified things
 
   " DOM2 Objects
