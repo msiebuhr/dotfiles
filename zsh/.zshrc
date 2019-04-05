@@ -122,20 +122,27 @@ if [[ -d $HOME/Source/go ]]; then
 	export GOPATH=$HOME/Source/go
 fi
 
+# Optional paths to source
+# Needs to come after initialization of heroku inits, for some reason
+foreach extrasource (
+    # From `brew cask install google-cloud-sdk
+    /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+    /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+
+    # Optional local secrets
+    ~/.zsh_secrets
+
+    # Play with NIX
+    # ~/.nix-profile/etc/profile.d/nix.sh
+    );
+    if [[ -f $extrasource ]]; then
+        echo $extrasource;
+        source $extrasource;
+    fi
+end
+
 # Set up my various NPM-repositories
 # FIXME: Complains on every shell-start if nothing matches `~/.npmrc-*`.
 #foreach npmname (`ls -a ~/ | awk -F npmrc '/^.npmrc-/ {if ($2) {print $2}}'`);
 #	alias npm$npmname="npm --userconfig=$HOME/.npmrc$npmname"
 #end
-
-if [[ -f ~/.zsh_secrets ]]; then
-    .  ~/.zsh_secrets
-fi
-
-#if [[ -f ~/.nix-profile/etc/profile.d/nix.sh ]]; then
-#    . ~/.nix-profile/etc/profile.d/nix.sh
-#fi
-
-# GVim on Ubuntu 11.10 doesn't work OK. Install from this PPA, to make shit work:
-# https://launchpad.net/~yofel/+archive/backports
-# (And see https://bugs.launchpad.net/ubuntu/+source/vim/+bug/776499 for details.)
