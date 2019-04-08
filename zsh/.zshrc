@@ -136,7 +136,6 @@ foreach extrasource (
     # ~/.nix-profile/etc/profile.d/nix.sh
     );
     if [[ -f $extrasource ]]; then
-        echo $extrasource;
         source $extrasource;
     fi
 end
