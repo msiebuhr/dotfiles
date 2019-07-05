@@ -28,9 +28,6 @@ bindkey "^[[1;9C" forward-word # alt + right arrow
 bindkey "^N" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
 
-# Completion for various user-supplied things with Homebrew
-fpath=(/usr/local/share/zsh/site-completions $fpath)
-fpath=(/usr/local/share/zsh-completions $fpath)
 
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
@@ -39,16 +36,21 @@ zstyle :compinstall filename $HOME/.zshrc
 # Initialize homebrew completions
 # See https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    BREW_PREFIX=$(brew --prefix)
+    FPATH=${BREW_PREFIX}/share/zsh-completions:$FPATH
+    FPATH=${BREW_PREFIX}/share/zsh/site-functions:$FPATH
+    #FPATH=${BREW_PREFIX}/share/zsh/site-completions:$FPATH
 fi
 
 
+# Cache completion-stuff?
 autoload -Uz compinit
 if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ~/.zcompdump) ]; then
   compinit
 else
   compinit -C
 fi
+
 # End of lines added by compinstall
 zstyle ':completion:*' special-dirs true
 
