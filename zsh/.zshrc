@@ -6,7 +6,7 @@ export VISUAL=$EDITOR
 # http://www.faqs.org/docs/Linux-mini/Xterm-Title.html
 case $TERM in
 	xterm*)
-		precmd () {print -Pn "\e]0;%n@%m: %~\a"}
+        precmd () {print -Pn "\e]0;%2d\a"}
         ;;
 esac
 
