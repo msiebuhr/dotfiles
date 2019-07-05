@@ -107,23 +107,12 @@ foreach extrapath (
 	fi
 end
 
-# Heroku autocomplete
-if which heroku >/dev/null 2>&1; then
-    # Output from $(heroku autocomplete:script zsh)
-
-    # heroku autocomplete setup
-    HEROKU_AC_ZSH_SETUP_PATH=/Users/msiebuhr/Library/Caches/heroku/autocomplete/zsh_setup && \
-        test -f $HEROKU_AC_ZSH_SETUP_PATH && \
-        source $HEROKU_AC_ZSH_SETUP_PATH;
-fi
-
 # GO
 if [[ -d $HOME/Source/go ]]; then
 	export GOPATH=$HOME/Source/go
 fi
 
 # Optional paths to source
-# Needs to come after initialization of heroku inits, for some reason
 foreach extrasource (
     # From `brew cask install google-cloud-sdk
     /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
