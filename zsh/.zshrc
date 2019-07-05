@@ -124,6 +124,12 @@ foreach extrasource (
     # Optional local secrets
     ~/.zsh_secrets
 
+    # While I currently run `kubectl` as provided by Docker-for-mac, ZSH
+    # completion comes from `brew install kubectl`. As that isn't linked in,
+    # I have to grab the completion-file directly from the install:
+    # Alternatively: Switch to oh-my-zsh and use their completion
+    /usr/local/Cellar/kubernetes-cli/1.14.0/share/zsh/site-functions/_kubectl
+
     # Play with NIX
     # ~/.nix-profile/etc/profile.d/nix.sh
     );
