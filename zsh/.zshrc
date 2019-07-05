@@ -1,6 +1,3 @@
-# Set editor
-export EDITOR=vim
-export VISUAL=$EDITOR
 
 # Set terminal title
 # http://www.faqs.org/docs/Linux-mini/Xterm-Title.html
@@ -58,7 +55,11 @@ zstyle ':completion:*' special-dirs true
 # See MAN zshmisc
 PROMPT='%B%F{white}%2~%f %(!.%F{red}.%F{blue})>%f%b'
 
-# Nice shortcuts
+# Set editor
+export EDITOR=vim
+export VISUAL=$EDITOR
+
+# Set some default arguments
 export GZIP='-9' # Having -v breaks tar(1) -z in some cases. See https://bugs.launchpad.net/ubuntu/+source/tar/+bug/883026
 export GARMIN_SAVE_RUNS=$HOME/Documents/Sync/GPS/
 export GREP_OPTIONS='--color'
