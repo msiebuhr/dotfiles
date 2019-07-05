@@ -78,15 +78,14 @@ if [[ $(uname) == Darwin ]];then
 
 	# Colors on Mac CLI tools
 	export CLICOLORS=1
-
-	# Processor count
-	PROCESSORS=`sysctl -n hw.ncpu`
 fi
 
 if [[ $(uname) == Linux ]];then
 	alias ls='ls --color -h'
-	PROCESSORS=`grep -c 'model name' /proc/cpuinfo`
 fi
+
+# Processor count
+PROCESSORS=$(nproc)
 
 # Set build parallelism based on processor count
 export MAKEFLAGS="-j $PROCESSORS"
