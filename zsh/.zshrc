@@ -70,6 +70,10 @@ export MINICOM="-m -c on"
 alias ll='ls -l'
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl -n"
 
+# Locale
+# https://stackoverflow.com/questions/56716993/error-message-when-starting-vim-failed-to-set-locale-category-lc-numeric-to-en
+export LC_ALL=en_US.UTF-8
+export LC_MONETARY=da_DK.UTF-8
 
 # Mac OS X
 if [[ $(uname) == Darwin ]];then
