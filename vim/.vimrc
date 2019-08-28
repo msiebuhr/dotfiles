@@ -126,16 +126,31 @@ autocmd BufNewfile,BufRead /tmp/mutt* set list listchars=tab:>-,trail:. tw=70
 "autocmd BufNewfile,BufRead *.go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 autocmd BufNewfile,BufRead *.go set softtabstop=4 noexpandtab
 
-" JavaScript folding, per http://amix.dk/blog/post/19132
-"function! JavaScriptFold()
-"	setl foldmethod=syntax
-"	setl foldlevelstart=1
-"	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-"
-"	function! FoldText()
-"		return substitute(getline(v:foldstart), '{.*', '{' . (1 + v:foldend - v:foldstart) . ' lines}', '')
-"	endfunction
-"	setl foldtext=FoldText()
-"endfunction
-"au FileType javascript call JavaScriptFold()
-"au FileType javascript setl fen
+
+" FROM https://begriffs.com/posts/2019-07-19-history-use-vim.html#filetypes
+
+" TODO: Perhaps use ~/Library/Caches/ on MacOS? and $XDG_CACHE_HOME on unix-like
+" things?
+
+" Protect changes between writes. Default values of
+" updatecount (200 keystrokes) and updatetime
+" (4 seconds) are fine
+set swapfile
+set directory^=~/.vim/swap//
+
+" protect against crash-during-write
+set writebackup
+" but do not persist backup after successful write
+set nobackup
+" use rename-and-write-new method whenever safe
+set backupcopy=auto
+" patch required to honor double slash at end
+if has("patch-8.1.0251")
+	" consolidate the writebackups -- not a big
+	" deal either way, since they usually get deleted
+	set backupdir^=~/.vim/backup//
+end
+
+" persist the undo tree for each file
+set undofile
+set undodir^=~/.vim/undo//
