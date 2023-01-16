@@ -3,14 +3,14 @@ call pathogen#infect()
 
 "I want syntax highligthing
 if has("syntax")
-	syntax on
+    syntax on
 
-	" https://stackoverflow.com/questions/27235102/vim-randomly-breaks-syntax-highlighting
-	syntax sync minlines=20
+    " https://stackoverflow.com/questions/27235102/vim-randomly-breaks-syntax-highlighting
+    syntax sync minlines=20
 endif
 
 " Add Ubnutus addon-path
-"set runtimepath+=/usr/share/vim/addons/
+set runtimepath+=/usr/share/vim/addons/
 
 " Skal buges at vim-LaTeX
 filetype plugin on
@@ -23,58 +23,60 @@ if has('win32')
     set grepprg=grep\ -nH\ $*
 endif
 
-" Bedre fonte
+" GUI-stuff
+"
+" Really should go in ~/.gvimrc, but that seem to intefere with some of the
+" stuff in here (i.e. spreading FILE.un~ undo-files all over the place...)
 if has("gui_running")
     " zenburn on GUI
     colorscheme zenburn
-    if has("gui_gtk2")
+
+    if has("gui_gtk3")
         "set guifont=Inconsolata\ 12
-        set guifont=SourceCodePro\ 13
+        "set guifont=SourceCodePro\ 13
+        set guifont=Go\ Mono\ 10
     elseif has("gui_macvim")
         set vb " No audible bell
         " Enabling this makes ex. {} turn into copyright and í on DK kbd...
         "set macmeta " Allow use of Option as meta key
-        set guifont=Menlo\ Regular:h14
+
+        "set guifont=Menlo\ Regular:h14
+        set guifont=Go_Mono:h14
     elseif has("gui_win32")
         set guifont=Lucida_Console:h11:cANSI
     endif
-
-    set guifont=Go_Mono:h14
-else
-    " Default colors elsewhere
-    colorscheme default
 endif
 
 " Editor layout
-set nu					" Linje-numerering
-set showmatch			" Parenthesis matching
-set ruler				" I want to see where I am in the file
+set nu                  " Linje-numerering
+set showmatch           " Parenthesis matching
+set ruler               " I want to see where I am in the file
 
 "Intet toolbar-pjat
 set guioptions-=T
 if ! has('win32') " Kun menu-bar i windows
-	set guioptions+=mrL
+    set guioptions+=mrL
 end
 set guioptions+=ac
 
 
 " Editor behaviour
-set backspace=2			" So that backspace should behave normal
-set incsearch			" incremental search
-set hlsearch			" Highlight my search
-set whichwrap+=<,>,[,]	" backspace and cursor keys wrap to previous/next line
-"set foldmethod=marker	" Correct folding is a bliss ...
-set foldmethod=syntax	" Fold by whatever syntax the syntaxer fancies.
+set backspace=2         " So that backspace should behave normal
+set incsearch           " incremental search
+set hlsearch            " Highlight my search
+set whichwrap+=<,>,[,]  " backspace and cursor keys wrap to previous/next line
+"set foldmethod=marker  " Correct folding is a bliss ...
+set foldmethod=syntax   " Fold by whatever syntax the syntaxer fancies.
 
 
 " Code stuff
-set autoindent		" autoindention
-set shiftwidth=4	" My tabs are 4 chars.
+set autoindent      " autoindention
+set shiftwidth=4    " My tabs are 4 chars.
 set tabstop=4
 set expandtab       " Expand all tabs to spaces
 set nofixendofline  " Doesn't add trail EOL if file doesn't have one
 
-set nocp			" No VI for me ....
+set nocp            " No VI for me ....
 
 " Make CTRL-P ignore node_modules, .git and other junk
 " let g:ctrlp_custom_ignore = {
@@ -93,38 +95,54 @@ set suffixes=.bak,.swp,.o,~,.class,.exe,.obj,.dvi,.pdf,.aux
 
 "Husk hvor jeg er i filerne (brug .viminfo)
 augroup JumpCursorOnEdit
-au!
-autocmd BufReadPost *
-	\ if expand("<afile>:p:h") !=? $TEMP |
-	\   if line("'\"") > 1 && line("'\"") <= line("$") |
-	\     let JumpCursorOnEdit_foo = line("'\"") |
-	\     let b:doopenfold = 1 |
-	\     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-	\        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-	\        let b:doopenfold = 2 |
-	\     endif |
-	\     exe JumpCursorOnEdit_foo |
-	\   endif |
-	\ endif
-" Need to postpone using "zv" until after reading the modelines.
-autocmd BufWinEnter *
-	\ if exists("b:doopenfold") |
-	\   exe "normal zv" |
-	\   if(b:doopenfold > 1) |
-	\       exe  "+".1 |
-	\   endif |
-	\   unlet b:doopenfold |
-	\ endif
+    au!
+    autocmd BufReadPost *
+                \ if expand("<afile>:p:h") !=? $TEMP |
+                \   if line("'\"") > 1 && line("'\"") <= line("$") |
+                \     let JumpCursorOnEdit_foo = line("'\"") |
+                \     let b:doopenfold = 1 |
+                \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
+                \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
+                \        let b:doopenfold = 2 |
+                \     endif |
+                \     exe JumpCursorOnEdit_foo |
+                \   endif |
+                \ endif
+    " Need to postpone using "zv" until after reading the modelines.
+    autocmd BufWinEnter *
+                \ if exists("b:doopenfold") |
+                \   exe "normal zv" |
+                \   if(b:doopenfold > 1) |
+                \       exe  "+".1 |
+                \   endif |
+                \   unlet b:doopenfold |
+                \ endif
 augroup END
 
+"
 " For misc. applications.
+"
 autocmd BufNewfile,BufRead *tex set tw=72
 
 " When I write email in mutt...
 autocmd BufNewfile,BufRead /tmp/mutt* set list listchars=tab:>-,trail:. tw=70
 
+" Spell-checking in Markdown and Git commits
+" https://lwn.net/Articles/822969/
+set spelllang=en
+autocmd FileType markdown setlocal spell
+autocmd FileType gitcommit setlocal spell
+
+autocmd FileType *.bzl *.bazel set shiftwidth=2
 "autocmd BufNewfile,BufRead *.go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-autocmd BufNewfile,BufRead *.go set softtabstop=4 noexpandtab
+"autocmd BufNewfile,BufRead *.go set softtabstop=4 noexpandtab
+let g:go_fmt_experimental = 1 " https://github.com/fatih/vim-go/issues/502
+
+" https://stackoverflow.com/a/37488992
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Yaml should have two-space indent
+autocmd FileType yaml setlocal softtabstop=2 shiftwidth=2 expandtab
 
 
 " FROM https://begriffs.com/posts/2019-07-19-history-use-vim.html#filetypes
@@ -146,11 +164,23 @@ set nobackup
 set backupcopy=auto
 " patch required to honor double slash at end
 if has("patch-8.1.0251")
-	" consolidate the writebackups -- not a big
-	" deal either way, since they usually get deleted
-	set backupdir^=~/.vim/backup//
+    " consolidate the writebackups -- not a big
+    " deal either way, since they usually get deleted
+    set backupdir^=~/.vim/backup//
 end
 
 " persist the undo tree for each file
 set undofile
 set undodir^=~/.vim/undo//
+
+" Use https://github.com/Chiel92/vim-autoformat on save
+"autocmd FileType yaml,yml let b:autoformat_autoindent=0
+"autocmd FileType yaml,yml let b:autoformat_retab=0
+"au BufWrite * :Autoformat
+
+" Map Ctrl-Shift-c to copy to Unix selection-buffer
+" See <https://stackoverflow.com/a/11489440>
+noremap <C-S-c> "+y
+"unmap <C-S-v>
+"noremap <C-S-v> "+p
+noremap <C-S-x> "+c
