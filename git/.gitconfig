@@ -1,33 +1,56 @@
 [user]
-	name = Morten Siebuhr
-	email = sbhr@sbhr.dk
+    name = Morten Siebuhr
+    #email = sbhr@sbhr.dk
+    email = morten.siebuhr@group.one
+    signingkey = /home/msi/.ssh/id_rsa_gitlab
 [core]
-	excludesfile = ~/.gitignore_global
-	quotepath = false
+    excludesfile = ~/.gitignore_global
+    quotepath = false
 [color]
-	status = auto
-	diff = auto
-	interactive = auto
-	branch = auto
+    status = auto
+    diff = auto
+    interactive = auto
+    branch = auto
 [alias]
-	co = checkout
-	cdiff = diff --cached
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	head = log --graph --decorate --pretty=oneline --abbrev-commit --all -n 20
-    up = pull --rebase --autostash
+    #co = checkout
+    cdiff = diff --cached
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    head = log --graph --decorate --pretty=oneline --abbrev-commit --all -n 20
+    up = pull --rebase --autostash --prune --all
 
 [format]
-	#pretty = short
+    #pretty = short
 
 [log]
-	date = local
+    date = local
 
 [push]
-	config = current
-	default = current
+    config = current
+    default = current
 
 [pull]
+    rebase = true
 # Rebase by default (avoids quite a few f*ups when my brain isn't working properly).
     #rebase = true
 [diff]
     indentHeuristic = true
+    noPrefix = true
+
+[url "git@gitlab.one.com:"]
+    insteadOf = https://gitlab.one.com/
+    email = morten.siebuhr@group.one
+    signingkey = /home/msi/.ssh/id_rsa_gitlab
+[rebase]
+    autostash = true
+[maintenance]
+    repo = /home/msi/Source/chef-repo
+    repo = /home/msi/Source/cthulhu
+    repo = /home/msi/Source/group.one-authdns
+[init]
+    defaultBranch = main
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
+[rerere]
+    enabled = true
