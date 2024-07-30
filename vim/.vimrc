@@ -9,19 +9,12 @@ if has("syntax")
     syntax sync minlines=20
 endif
 
-" Add Ubnutus addon-path
+" Add Ubnutu's addon-path
 set runtimepath+=/usr/share/vim/addons/
 
 " Skal buges at vim-LaTeX
 filetype plugin on
 filetype indent on
-
-"Sætter lidt specielle ting hvis der køres på windows
-if has('win32')
-    " vim-LaTeX-specifikt.
-    set shellslash
-    set grepprg=grep\ -nH\ $*
-endif
 
 " GUI-stuff
 "
@@ -32,9 +25,9 @@ if has("gui_running")
     colorscheme zenburn
 
     if has("gui_gtk3")
-        "set guifont=Inconsolata\ 12
+        set guifont=Inconsolata\ 12
         "set guifont=SourceCodePro\ 13
-        set guifont=Go\ Mono\ 10
+        "set guifont=Go\ Mono\ 10
     elseif has("gui_macvim")
         set vb " No audible bell
         " Enabling this makes ex. {} turn into copyright and í on DK kbd...
@@ -52,7 +45,7 @@ set nu                  " Linje-numerering
 set showmatch           " Parenthesis matching
 set ruler               " I want to see where I am in the file
 
-"Intet toolbar-pjat
+" No GUI Toolbar
 set guioptions-=T
 if ! has('win32') " Kun menu-bar i windows
     set guioptions+=mrL
@@ -65,7 +58,6 @@ set backspace=2         " So that backspace should behave normal
 set incsearch           " incremental search
 set hlsearch            " Highlight my search
 set whichwrap+=<,>,[,]  " backspace and cursor keys wrap to previous/next line
-"set foldmethod=marker  " Correct folding is a bliss ...
 set foldmethod=syntax   " Fold by whatever syntax the syntaxer fancies.
 
 
@@ -84,7 +76,7 @@ set nocp            " No VI for me ....
 "   \ 'file': '\v\.(exe|so|dll)$',
 "   \ 'link': 'some_bad_symbolic_links',
 "   \ }
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|node_modules|coverage)$', }
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](.git|node_modules|coverage|.jj)$', }
 
 " Hvis jeg bruger JAVA skal den bruge c-style indentering
 autocmd BufNewfile,BufEnter,BufLeave *.java set cindent
@@ -124,25 +116,18 @@ augroup END
 "
 autocmd BufNewfile,BufRead *tex set tw=72
 
-" When I write email in mutt...
-autocmd BufNewfile,BufRead /tmp/mutt* set list listchars=tab:>-,trail:. tw=70
-
 " Spell-checking in Markdown and Git commits
 " https://lwn.net/Articles/822969/
 set spelllang=en
 autocmd FileType markdown setlocal spell
-autocmd FileType gitcommit setlocal spell
+autocmd FileType gitcommit setlocal spell tw=82
 
 autocmd FileType *.bzl *.bazel set shiftwidth=2
-"autocmd BufNewfile,BufRead *.go set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
-"autocmd BufNewfile,BufRead *.go set softtabstop=4 noexpandtab
 let g:go_fmt_experimental = 1 " https://github.com/fatih/vim-go/issues/502
 
-" https://stackoverflow.com/a/37488992
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
 " Yaml should have two-space indent
-autocmd FileType yaml setlocal softtabstop=2 shiftwidth=2 expandtab
+" https://stackoverflow.com/a/37488992
+autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 
 " FROM https://begriffs.com/posts/2019-07-19-history-use-vim.html#filetypes
@@ -162,12 +147,6 @@ set writebackup
 set nobackup
 " use rename-and-write-new method whenever safe
 set backupcopy=auto
-" patch required to honor double slash at end
-if has("patch-8.1.0251")
-    " consolidate the writebackups -- not a big
-    " deal either way, since they usually get deleted
-    set backupdir^=~/.vim/backup//
-end
 
 " persist the undo tree for each file
 set undofile
