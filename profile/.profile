@@ -17,25 +17,30 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+#if [ -d "$HOME/bin" ] ; then
+#    PATH="$HOME/bin:$PATH"
+#fi
+#
+#if [ -d "$HOME/.local/bin" ] ; then
+#    PATH="$HOME/.local/bin:$PATH"
+#fi
+#
+## Golang
+#if [ -d "$HOME/Source/go" ] ; then
+#	export GOPATH="$HOME/Source/go"
+#fi
+#
+#if [ -d "/home/linuxbrew/.linuxbrew/bin" ] ; then
+#	export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+#fi
 
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# Golang
-if [ -d "$HOME/Source/go" ] ; then
-	export GOPATH="$HOME/Source/go"
-fi
 
 # Get hold of by paths
-#foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin);
-#	if [[ -d $extrapath ]]; then
-#		export PATH=$PATH:$extrapath
-#	fi
-#end
+foreach extrapath (~/bin ~/.local/bin ~/.gem/ruby/1.8/bin ~/Source/golang/bin /home/linuxbrew/.linuxbrew/bin);
+	if [[ -d $extrapath ]]; then
+		export PATH=$extrapath:$PATH
+	fi
+end
 
 export LANGUAGE="en_US:en"
 export LC_MESSAGES="en_US.UTF-8"
