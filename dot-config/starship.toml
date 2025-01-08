@@ -1,0 +1,106 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+command_timeout=20000
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$env_var\
+$python\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$fill\
+$time\
+$line_break\
+$jobs\
+$battery\
+$status\
+$os\
+$container\
+$shell\
+$character"""
+
+#right_format = '[\[ $time \]]($style)'
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[%](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = '[%](bold red)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+# Disable the package module, hiding it from the prompt completely
+#[package]
+#disabled = true
+
+[kubernetes]
+symbol = ''
+disabled = false
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%H:%M:%S'
+
+[directory]
+truncation_length = 2
+
+[gcloud]
+disabled = true
+
+[git_status]
+stashed = ''
+
+[fill]
+symbol = ' '
+
+[custom.jj]
+description = "Custom JJ config"
+when = "jj root"
+command = ""
+#command = '''
+#jj log -r@ -n1 --ignore-working-copy --no-graph --color always  -T '
+#  separate(" ",
+#    branches.map(|x| if(
+#        x.name().substr(0, 10).starts_with(x.name()),
+#        x.name().substr(0, 10),
+#        x.name().substr(0, 9) ++ "…")
+#      ).join(" "),
+#    tags.map(|x| if(
+#        x.name().substr(0, 10).starts_with(x.name()),
+#        x.name().substr(0, 10),
+#        x.name().substr(0, 9) ++ "…")
+#      ).join(" "),
+#    surround("\"","\"",
+#      if(
+#         description.first_line().substr(0, 24).starts_with(description.first_line()),
+#         description.first_line().substr(0, 24),
+#         description.first_line().substr(0, 23) ++ "…"
+#      )
+#    ),
+#    if(conflict, "conflict"),
+#    if(divergent, "divergent"),
+#    if(hidden, "hidden"),
+#  )
+#'
+#'''
+symbol = "𝕛 "
+
+
+[custom.jjstate]
+when = "jj root"
+command = '''
+jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
+'''
