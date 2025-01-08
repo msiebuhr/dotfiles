@@ -1,0 +1,12 @@
+{
+  "filename_with_episode": "%(seriesname)s S%(seasonnumber)02dE%(episode)s - %(episodename)s%(ext)s",
+  "filename_with_episode_no_season": "%(seriesname)s E%(episode)s - %(episodename)s%(ext)s",
+  "filename_without_episode": "%(seriesname)s S%(seasonnumber)02dE%(episode)s%(ext)s",
+  "filename_without_episode_no_season": "%(seriesname)s  E[%(episode)s%(ext)s",
+  "language": "en",
+  "move_files_confirmation": true,
+  "move_files_enable": true,
+  "multiep_format": "%(epname)s (%(episodemin)s-%(episodemax)s)",
+  "move_files_destination": "/home/msi/Videos/Series/%(seriesname)s/Season %(seasonnumber)s/",
+  "search_all_languages": true
+}
