@@ -3,6 +3,6 @@
 
 Install with
 
-   stow -v -t ~ git vim zsh profile ssh
+   just install
 
-(Converting the rest is an ongoing project...)
+(Using https://just.systems/)
