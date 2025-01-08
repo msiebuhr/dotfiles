@@ -37,7 +37,7 @@
     noPrefix = true
 
 [url "git@gitlab.one.com:"]
-    insteadOf = https://gitlab.one.com/
+    insteadOf = https://gitlab.group.one/
     email = morten.siebuhr@group.one
     signingkey = /home/msi/.ssh/id_rsa_gitlab
 [rebase]
@@ -46,6 +46,7 @@
     repo = /home/msi/Source/chef-repo
     repo = /home/msi/Source/cthulhu
     repo = /home/msi/Source/group.one-authdns
+    repo = /home/msi/Source/techdoc
 [init]
     defaultBranch = main
 [gpg]
