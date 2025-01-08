@@ -139,7 +139,7 @@ autocmd FileType yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 " updatecount (200 keystrokes) and updatetime
 " (4 seconds) are fine
 set swapfile
-set directory^=~/.vim/swap//
+set directory^=~/.cache/vim/swap//
 
 " protect against crash-during-write
 set writebackup
@@ -150,7 +150,7 @@ set backupcopy=auto
 
 " persist the undo tree for each file
 set undofile
-set undodir^=~/.vim/undo//
+set undodir^=~/.cache/vim/undo//
 
 " Use https://github.com/Chiel92/vim-autoformat on save
 "autocmd FileType yaml,yml let b:autoformat_autoindent=0
