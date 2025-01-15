@@ -1,0 +1,2 @@
+# Disable alternate ligatures <https://ghostty.org/docs/config/reference#font-feature>
+font-feature = -calt
