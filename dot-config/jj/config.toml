@@ -2,6 +2,10 @@
 name = "Morten Siebuhr"
 email = "morten.siebuhr@group.one"
 
+[template-aliases]
+# I'm usually always working with group.one-users, so let's drop the domain-part
+'format_short_signature(signature)' = 'signature.username()'
+
 [aliases]
 head = ['log', '--revisions', 'latest(all(), 20)']
 rebase-all = ['rebase', '--branch', 'all:mutable() & mine()', '--destination', 'trunk()']
