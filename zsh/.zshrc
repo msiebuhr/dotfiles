@@ -11,10 +11,6 @@ then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-if type bazelisk &>/dev/null; then
-    alias bazel="bazelisk"
-fi
-
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -142,9 +138,6 @@ export ONECOMID="msi"
 
 ZSH_THEME_TERM_TITLE_IDLE="%2~"
 
-# JJ completion
-#source <(jj util completion zsh)
-source <(COMPLETE=zsh jj)
 
 function chef-rubocop() {
   mkdir -p ./chef-syntax-empy-dir
