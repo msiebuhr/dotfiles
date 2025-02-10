@@ -138,6 +138,11 @@ export ONECOMID="msi"
 
 ZSH_THEME_TERM_TITLE_IDLE="%2~"
 
+if type jj &>/dev/null
+then
+    # JJ completion
+    source <(jj util completion zsh)
+fi
 
 function chef-rubocop() {
   mkdir -p ./chef-syntax-empy-dir
