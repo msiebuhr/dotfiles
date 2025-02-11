@@ -25,6 +25,10 @@ key = "/home/msi/.ssh/id_rsa_gitlab"
 command = ["buildifier", "-lint=fix", "-path=$path"]
 patterns = ["glob:**/*.bazel", "glob:**/*.bzl", "WORKSPACE"]
 
+[fix.tools.justfile-format]
+command = ["just", "--justfile", "/dev/stdin", "--dump"]
+patterns = ["justfile", ".justfile"]
+
 [ui]
 diff-editor = ":builtin"
 default-command = "log"
