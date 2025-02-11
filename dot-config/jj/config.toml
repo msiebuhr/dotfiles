@@ -12,8 +12,6 @@ head = ['log', '--revisions', 'latest(all(), 20)']
 rebase-all = ['rebase', '--branch', 'all:mutable() & mine()', '--destination', 'trunk()']
 
 [git]
-# Get remote branches when doing `jj git fetch` <https://martinvonz.github.io/jj/latest/github/#working-with-other-peoples-branches>
-#auto-local-bookmark = true
 push-bookmark-prefix = "msi/push-"
 
 [signing]
