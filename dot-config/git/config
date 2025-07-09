@@ -4,7 +4,6 @@
     email = morten.siebuhr@group.one
     signingkey = /home/msi/.ssh/id_rsa_gitlab
 [core]
-    excludesfile = ~/.gitignore_global
     quotepath = false
 [color]
     status = auto
@@ -35,13 +34,16 @@
 [diff]
     indentHeuristic = true
     noPrefix = true
+	algorithm = histogram
 
 [url "git@gitlab.one.com:"]
     insteadOf = https://gitlab.group.one/
     email = morten.siebuhr@group.one
     signingkey = /home/msi/.ssh/id_rsa_gitlab
 [rebase]
-    autostash = true
+	autoStash = true
+	autoSquash = true
+	updateRefs = true
 [maintenance]
     repo = /home/msi/Source/chef-repo
     repo = /home/msi/Source/cthulhu
@@ -54,4 +56,5 @@
 [commit]
     gpgsign = true
 [rerere]
-    enabled = true
+	enabled = true
+	autoupdate = true

@@ -31,7 +31,5 @@ Session.vim
 # Per-project temporary data
 tempWork
 
-# Things from Podio boxen setup
-\#*\#
-/tags
-/.bundle/
+# Zed
+.zed/settings.json
