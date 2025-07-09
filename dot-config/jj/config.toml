@@ -8,14 +8,30 @@ email = "morten.siebuhr@group.one"
 'format_short_signature(signature)' = 'signature.email().local()'
 
 [aliases]
-head = ['log', '--revisions', 'latest(all(), 20)']
-rebase-all = ['rebase', '--branch', 'all:mutable() & mine()', '--destination', 'trunk()']
+# Show the "head" of what's being done:
+#  - Current revset to trunk() ('@..trunk()', but .. excludes trunk())
+#  - Where master/main is ('trunk()')
+#  - 5 most recent commits on other branches ('ancestors(visible_heads(), 5)')
+# And then pick the 15 most recent of all those ('latest(..., 15)')
+head = ['log', '--revisions', 'latest(@..trunk() | trunk() | ancestors(visible_heads(), 5), 15)']
+# rebase-all = ['rebase', '--branch', 'all:mutable() & mine()', '--destination', 'trunk()']
+link = ['util', 'exec', '--', 'jj-link']
+up = ["util", "exec", "--", "bash", "-c", """
+#!/usr/bin/env bash
+set -euo pipefail
+jj git fetch --all-remotes
+jj rebase --branch 'all:mutable() & mine()' --destination 'trunk()'
+"""]
+
+[templates]
+git_push_bookmark = '"msi/" ++ change_id.short()'
 
 [git]
-push-bookmark-prefix = "msi/push-"
+private-commits = '''description(glob:'WIP:*') | description(glob:'wip:*')'''
+write-change-id-header = true
 
 [signing]
-sign-all = true
+behavior = "own"
 backend = "ssh"
 key = "/home/msi/.ssh/id_rsa_gitlab"
 
@@ -26,6 +42,10 @@ patterns = ["glob:**/*.bazel", "glob:**/*.bzl", "WORKSPACE"]
 [fix.tools.justfile-format]
 command = ["just", "--justfile", "/dev/stdin", "--dump"]
 patterns = ["justfile", ".justfile"]
+
+[fix.tools.go-format]
+command = ["gofmt", "-s"]
+patterns = ["glob:**/*.go"]
 
 [ui]
 diff-editor = ":builtin"
