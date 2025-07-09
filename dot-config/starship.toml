@@ -68,7 +68,7 @@ symbol = ' '
 
 [custom.jj]
 description = "Custom JJ config"
-when = "jj root"
+when = "jj root --ignore-working-copy"
 command = ""
 #command = '''
 #jj log -r@ -n1 --ignore-working-copy --no-graph --color always  -T '
@@ -96,11 +96,11 @@ command = ""
 #  )
 #'
 #'''
-symbol = "𝕛 "
+symbol = "🐦 "
 
 
 [custom.jjstate]
-when = "jj root"
+when = "jj root --ignore-working-copy"
 command = '''
 jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
 '''
