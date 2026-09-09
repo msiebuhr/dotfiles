@@ -78,3 +78,7 @@ diff-formatter = ["difft", "--color=always", "$left", "$right"]
 
 merge-editor = ":builtin"
 #pager = "delta"
+
+[ui.movement]
+# https://docs.jj-vcs.dev/latest/config/#behavior-of-prev-and-next-commands
+edit = true
