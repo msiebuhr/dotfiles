@@ -12,11 +12,6 @@ $localip\
 $shlvl\
 $kubernetes\
 $directory\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
 $env_var\
 $python\
 $crystal\
@@ -33,6 +28,13 @@ $os\
 $container\
 $shell\
 $character"""
+
+# Git status set between "$directory" and "$env_var"
+# $git_branch\
+# $git_commit\
+# $git_state\
+# $git_metrics\
+# $git_status\
 
 #right_format = '[\[ $time \]]($style)'
 
@@ -99,8 +101,8 @@ command = ""
 symbol = "🐦 "
 
 
-[custom.jjstate]
-when = "jj root --ignore-working-copy"
-command = '''
-jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
-'''
+# [custom.jjstate]
+# when = "jj root --ignore-working-copy"
+# command = '''
+# jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
+# '''
