@@ -22,6 +22,7 @@ set -euo pipefail
 jj git fetch --all-remotes
 jj rebase --branch 'all:mutable() & mine()' --destination 'trunk()'
 """]
+jj = ["util", "exec", "--", "jj"]
 
 [templates]
 git_push_bookmark = '"msi/" ++ change_id.short()'
