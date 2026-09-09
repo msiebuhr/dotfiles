@@ -33,3 +33,5 @@ tempWork
 
 # Zed
 .zed/settings.json
+
+**/.claude/settings.local.json
