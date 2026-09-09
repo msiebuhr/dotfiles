@@ -1,3 +1,5 @@
+dot-config/jj/repos/
+vim/.vim/view/
 vim/.vim/pack/
 vim/.vim/swap/
 vim/.vim/undo/
