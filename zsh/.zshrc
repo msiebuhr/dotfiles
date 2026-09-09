@@ -2,14 +2,16 @@
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
+export NVM_DIR="$HOME/.local/nvm"
+
 
 zstyle ':omz:lib:directories' aliases no
 zstyle ':omz:plugins:git' aliases no
 # See <https://docs.brew.sh/Shell-Completion>
-if type brew &>/dev/null
-then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
+#if type brew &>/dev/null
+#then
+#    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+#fi
 
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -80,7 +82,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bazel fzf kitchen direnv dotenv kubectl)
+plugins=(git bazel fzf kitchen kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -138,14 +140,30 @@ export ONECOMID="msi"
 
 ZSH_THEME_TERM_TITLE_IDLE="%2~"
 
-if type jj &>/dev/null
-then
-    # JJ completion
-    source <(jj util completion zsh)
-fi
+alias z="zed $(jj root); jj"
 
 function chef-rubocop() {
-  mkdir -p ./chef-syntax-empy-dir
-  docker run -it --rm -v $(pwd):/builds/ -v $(pwd)/chef-syntax-empy-dir:/builds/cookbooks harbor.one.com/standard-images/ci/onecom-kitchen-build:focal-rootless rubocop $@
-  rm -rf ./chef-syntax-empy-dir
+    TMP=$(mktemp -d)
+    docker run -it --rm -v $(pwd):/builds/ -v "$TMP:/builds/cookbooks" harbor.one.com/standard-images/ci/onecom-kitchen-build:focal-rootless rubocop $@
+    rm -rf "$TMP"
 }
+
+function chef-cookstyle() {
+  docker run \
+    -v "$PWD:/workdir" \
+    -w /workdir \
+    harbor.one.com/standard-images/ci/cookstyle:noble-rootless \
+    cookstyle --color "$@"
+}
+
+# https://stackoverflow.com/a/78709539/145307
+_just_completion() {
+    if [[ -f "justfile" ]]; then
+      local options
+      options="$(just --summary)"
+      reply=(${(s: :)options})  # turn into array and write to return variable
+    fi
+}
+
+compctl -K _just_completion just
+
