@@ -1,0 +1,17 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+--when.hostnames = ["msi-t14"]
+
+[user]
+email = "morten.siebuhr@group.one"
+
+[signing]
+behavior = "own"
+backend = "ssh"
+key = "/home/msi/.ssh/id_rsa_gitlab"
+
+[template-aliases]
+# See https://jj-vcs.github.io/jj/latest/config/#author-format
+# I'm usually working with group.one-users, so let's drop the domain-part
+'format_short_signature(signature)' = 'signature.email().local()'
+
+
